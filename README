@@ -1,0 +1,23 @@
+===== OPTIONS =====
+usage: bin2bmp <options> ... <filename>
+-i, --input       	filename to visualize  [mandatory] 
+-w, --width       	width of output image
+-o, --output      	output filename (default is <input_filename>.jpg)
+-V, --verbose     	print lots of extra stuff
+-b, --bmp        	reverts to the old bitmap style output(jpg is default)
+-m, --monochrome 	one bit per pixel
+-c, --compress   	highly compressed jpeg
+-p, --png        	output in png format
+
+===== INSTALL =====
+To install this program in Linux: 
+sudo make install
+or 
+make install (as root)
+
+===== RUNNING IN PLACE =====
+#There's no magic in the install script.  The script just needs to be in your 
+#path. On any platform with python and the python image library 
+#(http://www.pythonware.com/products/pil/), just do python bin2bmp.py ...
+
+Since version 0.1.6.5, the script uses Pillow instead of PIL.
