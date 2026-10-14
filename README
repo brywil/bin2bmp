@@ -2,6 +2,9 @@
 bin2bmp file              # -> file.png, an image of the file's bytes
 bmp2bin file.png          # -> file, the exact bytes back (or: bin2bmp -d file.png)
 
+bin2bmp.py.png in this repo is the script itself, encoded with -s. Get it back with:
+    python3 bin2bmp.py -d -o copy.py bin2bmp.py.png
+
 ===== OPTIONS =====
 usage: bin2bmp <options> ... <filename>
 -i, --input       	file to visualize (or the image to decode)
