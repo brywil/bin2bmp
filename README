@@ -1,23 +1,40 @@
+===== USAGE =====
+bin2bmp file              # -> file.png, an image of the file's bytes
+bmp2bin file.png          # -> file, the exact bytes back (or: bin2bmp -d file.png)
+
 ===== OPTIONS =====
 usage: bin2bmp <options> ... <filename>
--i, --input       	filename to visualize  [mandatory] 
--w, --width       	width of output image
--o, --output      	output filename (default is <input_filename>.jpg)
+-i, --input       	file to visualize (or the image to decode)
+-o, --output      	output filename
+-d, --decode      	get the file back out of an image (what bmp2bin does)
+-w, --width       	width of output image (default 128)
+-p, --png         	PNG output (the default; lossless)
+-b, --bmp         	BMP output (lossless)
+-m, --monochrome  	one bit per pixel, as a GIF (lossless)
+-j, --jpeg        	JPEG output -- LOSSY: for looking at, cannot be decoded exactly
+-c, --compress    	highly compressed JPEG -- LOSSY, as -j but much worse
+-s, --sign        	store a SHA256 of the file, checked when decoding
 -V, --verbose     	print lots of extra stuff
--b, --bmp        	reverts to the old bitmap style output(jpg is default)
--m, --monochrome 	one bit per pixel
--c, --compress   	highly compressed jpeg
--p, --png        	output in png format
+-v, --version     	print the version
+
+Decoding needs no format flags: every image carries a small header with the file's length (and its
+SHA256 with -s), so the exact bytes come back. By default bmp2bin writes to the image name minus its
+extension -- normally the original file -- and warns when that file already exists; use -o to write
+somewhere else. Images made by 0.1.x still decode (unsigned ones may keep trailing padding, since
+0.1.x never stored a length).
+
+JPEG is lossy: even at quality 100 it changes several percent of the bytes, so a JPEG is a picture of
+a file, not a copy of it. Use PNG (the default), BMP or -m when you want the file back.
 
 ===== INSTALL =====
-To install this program in Linux: 
+To install this program in Linux:
 sudo make install
-or 
+or
 make install (as root)
 
 ===== RUNNING IN PLACE =====
-#There's no magic in the install script.  The script just needs to be in your 
-#path. On any platform with python and the python image library 
-#(http://www.pythonware.com/products/pil/), just do python bin2bmp.py ...
+There's no magic in the install script. On any platform with Python 3 and Pillow
+(pip install pillow, or apt install python3-pil), just run python3 bin2bmp.py ...
+(or bmp2bin.py, a link to the same script, to decode).
 
-Since version 0.1.6.5, the script uses Pillow instead of PIL.
+Since version 0.2.0 the script is Python 3. Since 0.1.6.5 it uses Pillow instead of PIL.

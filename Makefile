@@ -3,5 +3,5 @@ default:
 clean:
 	@echo "Nothing to do. This is not yet a compiled program."
 install:
-	cp bin2bmp.py bin2bmp
-	install -m 755 bin2bmp ${DESTDIR}/usr/bin/
+	install -D -m 755 bin2bmp.py ${DESTDIR}/usr/bin/bin2bmp
+	ln -sf bin2bmp ${DESTDIR}/usr/bin/bmp2bin

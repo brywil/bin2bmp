@@ -7,5 +7,5 @@ Standards-Version: 3.6.0
 
 Package: bin2bmp
 Architecture: any
-Depends: ${shlibs:Depends}, ${misc:Depends}, python, python-imaging
+Depends: ${shlibs:Depends}, ${misc:Depends}, python3, python3-pil
 Description: A simple utility to create pictures of binary information.
